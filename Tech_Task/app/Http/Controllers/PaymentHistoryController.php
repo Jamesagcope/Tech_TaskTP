@@ -6,9 +6,13 @@ use App;
 
 class PaymentHistoryController
 {
+    public function insert(request $re){
+
+
+    }
+
     public function receiveData(){
 
-        print session()->get('id');
 
         $payments = App\payment::where('userID', session()->get('id'))->get();
 

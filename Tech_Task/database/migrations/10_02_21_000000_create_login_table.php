@@ -19,8 +19,6 @@ class CreateLoginTable extends Migration
             $table->string('password');
             $table->dateTime('created_at');
             $table->dateTime('updated_at');
-
-
         });
     }
 

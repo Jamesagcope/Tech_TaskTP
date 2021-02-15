@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97733387-b17b-49a4-8a18-6aa3b9a074e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/layout/alert.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Tech_Task.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Tech_Task.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentHistoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentHistoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/api.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/api.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/10_02_21_000000_create_login_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/10_02_21_000000_create_login_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/10_02_21_00000_create_paymet_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/10_02_21_00000_create_paymet_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/madePayment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/madePayment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/transaction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/transaction.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +184,7 @@
       <workItem from="1613228844366" duration="1974000" />
       <workItem from="1613239527912" duration="4809000" />
       <workItem from="1613303980414" duration="25511000" />
-      <workItem from="1613393878630" duration="4477000" />
+      <workItem from="1613393878630" duration="20426000" />
     </task>
     <servers />
   </component>

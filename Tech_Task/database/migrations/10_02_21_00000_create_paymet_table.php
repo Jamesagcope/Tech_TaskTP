@@ -19,7 +19,8 @@ class CreatePaymetTable extends Migration
             $table->string('Reference');
             $table->integer('userID')->unsigned();
             $table->foreign('userID')->references('id')->on('users');
-            $table->timestamps();
+            $table->dateTime('created_at');
+            $table->dateTime('updated_at');
         });
     }
 

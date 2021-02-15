@@ -25,7 +25,7 @@ class LoginController
         $check_email = App\Login::where('email', $email)->get();// this is checking in the database if email already exists
 
         if (count($check_email) > 0) { //this is to check duplicate email insertion
-            return redirect('/register')->with('alert', 'Email exists already'); //if email is a duplicate, then alert message
+            return redirect('/register')->with('error', 'Email exists already'); //if email is a duplicate, then alert message
 
         } else {
 
@@ -38,7 +38,7 @@ class LoginController
 
 
             if ($created) {
-                return redirect('/')->with('alert', 'Account Created Successfully');//if creation is successful then show alert and then redirect to login page
+                return redirect('/')->with('success', 'Account Created Successfully');//if creation is successful then show alert and then redirect to login page
             }
         }
     }
@@ -65,9 +65,9 @@ class LoginController
         if (count($session) > 0) {
             $re->session()->put('id', $session[0]->id);
             $re->session()->put('email', $session[0]->email);
-            return redirect('/transaction');
+            return redirect('/transaction')->with('success', 'you have successfully login');
         } else {
-            return redirect('/')->with('alert', 'Email or Password does not match');
+            return redirect('/')->with('error', 'Email or Password does not match');
         }
 
     }
@@ -75,7 +75,7 @@ class LoginController
     public function protect(Request $re)
     {
         if ($re->session()->get('id') == "") {
-            return redircet('/');
+            return redirect('/');
         } else {
             $userEmail = $re->session()->get('email');
 
@@ -89,6 +89,8 @@ class LoginController
     {
         $re->session()->forget('id');
         $re->session()->forget('email');
+        $re->session()->forget('tranRef');
+        $re->session()->forget('amount');
 
         return redirect('/');
 

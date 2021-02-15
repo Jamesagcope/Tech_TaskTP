@@ -12,7 +12,7 @@
     <p align="center" class="h5">Logged in as {{session()->get('email')}}</p>
     <h3 align="center">Enter Amount and Reference for Transaction</h3>
 
-
-
+    <p class="h4">{{$code}}</p>
+    <p class="h4">{{$des}}</p>
 
 @endsection

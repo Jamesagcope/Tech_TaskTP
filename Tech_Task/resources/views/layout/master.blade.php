@@ -28,12 +28,14 @@
 </head>
 <body>
 <br/>
+
 <div class="container box">
     @yield('login')
     @yield('register')
     @yield('transaction')
     @yield('payHistory')
     @yield('madePayment')
+    @include('layout.alert')
 
     @if($errors->any())
         @foreach($errors->all() as $error)

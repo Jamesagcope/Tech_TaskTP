@@ -13,7 +13,7 @@
     <form method="post" action="apiRequest">
         {{ csrf_field() }}
         <div class="form-group">
-            <input placeholder="Amount" type="number" name="amount" class="form-control"/>
+            <input placeholder="Amount" pattern="^\d*(\.\d{0,2})?$" name="amount" class="form-control"/>
         </div>
         <div class="form-group">
             <input placeholder="Reference" type="text" name="reference" class="form-control"/>
