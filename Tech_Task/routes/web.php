@@ -27,7 +27,7 @@ Route::get('/transaction','LoginController@protect');
 Route::get('/logout','LoginController@logout');
 
 Route::post('/apiRequest','api@apiRequest');
-Route::post('/requests/','api@apiRequest');
+Route::get('/requests/','api@requests');
 
 
 
