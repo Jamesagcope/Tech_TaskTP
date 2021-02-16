@@ -17,9 +17,11 @@ class api extends Controller
         $amount = $re->amount;//grabs information form form
         $ref = $re->reference;
 
+        //create session for amount and reference
         $re->session()->put('tranRef', $ref);
         $re->session()->put('amount', $amount);
 
+        //API
         $url = "https://test.oppwa.com/v1/checkouts";
         $data = "entityId=8ac7a4ca759cd78501759dd759ad02df" .
             "&amount=".number_format($amount,2).
@@ -32,37 +34,37 @@ class api extends Controller
             'Authorization:Bearer OGFjN2E0Y2E3NTljZDc4NTAxNzU5ZGQ3NThhYjAyZGR8NTNybThiSmpxWQ=='));
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $responseData = curl_exec($ch);
         if(curl_errno($ch)) {
             return curl_error($ch);
         }
         curl_close($ch);
+        //API
 
+        $Aresponse = json_decode($responseData);//decoding jason to get the array output
 
-        //$responseData = request($amount, $ref);
-
-        $Aresponse = json_decode($responseData);
-
+        //php breake to display the api payment system.
          ?>
         <style>body {background-color:#f6f6f5;}</style>
         <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=<?=$Aresponse->id?>"></script>
         <form action="/requests/" class="paymentWidgets" data-brands="VISA MASTER AMEX"></form>
         <?php
+        //calls request page that calls requests function
     }
-
+    //request function that gets the api response.
     public function requests(request $path){
 
-        $path = $_GET['id'];
-        $rp = $_GET['resourcePath'];
+        $rp = $_GET['resourcePath'];//get url path
 
+        //getting info out of the session to put in the database
         $amount = session()->get('amount');
         $ref = session()->get('tranRef');
         $userid = session()->get('id');
 
 
-        $url = "https://test.oppwa.com".$rp;
+        $url = "https://test.oppwa.com".$rp;//adds path to this url to get a response as it has the id need to generate a success or error
         $url .= "?entityId=8ac7a4ca759cd78501759dd759ad02df";
 
         $ch = curl_init();
@@ -70,7 +72,7 @@ class api extends Controller
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Authorization:Bearer OGFjN2E0Y2E3NTljZDc4NTAxNzU5ZGQ3NThhYjAyZGR8NTNybThiSmpxWQ=='));
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);// this should be set to true in production
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $responseData = curl_exec($ch);
         if(curl_errno($ch)) {
@@ -80,6 +82,7 @@ class api extends Controller
 
         $Aresponse = json_decode($responseData);
 
+        //adding the data into the payments database.
         $trans = new App\payment;
 
         $trans->amount = $amount;
@@ -87,13 +90,13 @@ class api extends Controller
         $trans->userID = $userid;
         $trans->created_at = $Aresponse->timestamp;
         $trans->updated_at = $Aresponse->timestamp;
-        $trans->save();
+        $trans->save();//saving the data
 
         $code = $Aresponse->result->code;
         $des = $Aresponse->result->description;
 
+        //return to show if the payment was successful or not.
         return view('/madePayment', compact('code', 'des'));
-
     }
 
 }

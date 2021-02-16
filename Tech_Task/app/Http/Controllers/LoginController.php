@@ -14,31 +14,32 @@ class LoginController
     //this function will create a new user into the database.
     public function create(request $re)
     {
-        $re->validate([//will through an error if fields are left blank
+        $re->validate([//will through an error if fields are left blank.
             'email' => 'required',
             'password' => 'required'
         ]);
 
-        $email = $re->email;//grabs information form form
+        $email = $re->email;//grabs information form form.
         $pass = $re->password;
 
-        $check_email = App\Login::where('email', $email)->get();// this is checking in the database if email already exists
+        $check_email = App\Login::where('email', $email)->get();// this is checking in the database if email already exists.
 
-        if (count($check_email) > 0) { //this is to check duplicate email insertion
-            return redirect('/register')->with('error', 'Email exists already'); //if email is a duplicate, then alert message
+        if (count($check_email) > 0) { //this is to check duplicate email insertion.
+            return redirect('/register')->with('error', 'Email exists already'); //if email is a duplicate, then alert message.
 
         } else {
 
-            $login = new App\login;//accessing login class that gives us the chance to edit the database
+            $login = new App\login;//accessing login class that gives us the chance to edit the database.
 
+            //passing the data into the login table, into the corresponding column names.
             $login->email = $email;
             $login->password = $pass;
 
-            $created = $login->save();// saving whats been inserted
+            $created = $login->save();// saving whats been inserted.
 
 
             if ($created) {
-                return redirect('/')->with('success', 'Account Created Successfully');//if creation is successful then show alert and then redirect to login page
+                return redirect('/')->with('success', 'Account Created Successfully');//if creation is successful then show alert and then redirect to login page.
             }
         }
     }
@@ -49,10 +50,10 @@ class LoginController
     }
 
 
-    //when an already exiting user trys to log in ths
+    //when an already exiting user tries to login this function is called.
     public function checkUser(request $re)
     {
-        $re->validate([//will through an error if fields are left blank
+        $re->validate([//will through an error if fields are left blank.
             'email' => 'required',
             'password' => 'required'
         ]);
@@ -60,24 +61,24 @@ class LoginController
         $email = $re->email;
         $pass = $re->password;
 
-        $session = App\Login::where('email', $email)->where('password', $pass)->get();
+        $session = App\Login::where('email', $email)->where('password', $pass)->get();//create a session that grabs the data that matches the email and password that is inputted into the form.
 
         if (count($session) > 0) {
-            $re->session()->put('id', $session[0]->id);
-            $re->session()->put('email', $session[0]->email);
+            $re->session()->put('id', $session[0]->id);//place id into a session
+            $re->session()->put('email', $session[0]->email);//place email into a session
             return redirect('/transaction')->with('success', 'you have successfully login');
         } else {
-            return redirect('/')->with('error', 'Email or Password does not match');
+            return redirect('/')->with('error', 'Email or Password does not match');// if the email and password does not match then through error.
         }
-
     }
 
+    //protect function allows the users ID to be saved.
     public function protect(Request $re)
     {
-        if ($re->session()->get('id') == "") {
+        if ($re->session()->get('id') == "") {//if id is blank send back to login page
             return redirect('/');
         } else {
-            $userEmail = $re->session()->get('email');
+            $userEmail = $re->session()->get('email');// else grab email and print it to transaction page
 
             $capsule = array('userEmail' => $userEmail);
             return view('/transaction')->with($capsule);
@@ -85,6 +86,7 @@ class LoginController
         }
     }
 
+    //this function makes sure that when the user logs out there data is deleted.
     public function logout(Request $re)
     {
         $re->session()->forget('id');
