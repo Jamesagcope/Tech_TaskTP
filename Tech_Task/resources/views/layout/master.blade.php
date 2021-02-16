@@ -7,7 +7,7 @@
     <script src="https://maxcnd.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style type="text/css">
         .box{
-            width:600px;
+            width:700px;
             margin:0 auto;
             border:1px solid #ccc;
         }
@@ -24,6 +24,7 @@
             text-transform: uppercase;
             font-weight: bold;
         }
+
     </style>
 </head>
 <body>

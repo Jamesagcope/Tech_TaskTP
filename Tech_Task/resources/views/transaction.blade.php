@@ -19,6 +19,12 @@
             <input placeholder="Reference" type="text" name="reference" class="form-control"/>
         </div>
         <div class="form-group">
+            <input placeholder="Bill Address" type="text" name="billingAddress" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <input placeholder="customer information" type="text" name="customerInfo" class="form-control"/>
+        </div>
+        <div class="form-group">
             <input type="submit" name="pay" class="btn btn-primary" value="Pay"/>
         </div>
     </form>

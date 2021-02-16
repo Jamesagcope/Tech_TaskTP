@@ -11,15 +11,21 @@ class api extends Controller
     public function apiRequest(request $re){
         $re->validate([//will through an error if fields are left blank
             'amount' => 'required',
-            'reference' => 'required|min:3'
+            'reference' => 'required|min:3',
+            'billingAddress' => 'required',
+            'customerInfo' => 'required'
         ]);
 
         $amount = $re->amount;//grabs information form form
         $ref = $re->reference;
+        $bAddress = $re->billingAddress;
+        $cInfo = $re->customerInfo;
 
         //create session for amount and reference
         $re->session()->put('tranRef', $ref);
         $re->session()->put('amount', $amount);
+        $re->session()->put('address', $bAddress);
+        $re->session()->put('info', $cInfo);
 
         //API
         $url = "https://test.oppwa.com/v1/checkouts";
@@ -62,6 +68,8 @@ class api extends Controller
         $amount = session()->get('amount');
         $ref = session()->get('tranRef');
         $userid = session()->get('id');
+        $bAddress = session()->get('address');
+        $cInfo = session()->get('info');
 
 
         $url = "https://test.oppwa.com".$rp;//adds path to this url to get a response as it has the id need to generate a success or error
@@ -87,6 +95,9 @@ class api extends Controller
 
         $trans->amount = $amount;
         $trans->Reference = $ref;
+        $trans->billingAddress = $bAddress;
+        $trans->customerInfo = $cInfo;
+        $trans->paymentStatus = $Aresponse->result->description;
         $trans->userID = $userid;
         $trans->created_at = $Aresponse->timestamp;
         $trans->updated_at = $Aresponse->timestamp;

@@ -18,13 +18,21 @@
                 <tr>
                     <th>Amount</th>
                     <th>Reference</th>
+                    <th>Billing Address</th>
+                    <th>Customer Information</th>
+                    <th>Payment Status</th>
                     <th>Time paid</th>
+                <!--<th> </th>-->
                 </tr>
                 @foreach($payments as $row)
                 <tr>
                     <td>{{$row['amount']}}</td>
                     <td>{{$row['Reference']}}</td>
+                    <td>{{$row['billingAddress']}}</td>
+                    <td>{{$row['customerInfo']}}</td>
+                    <td>{{$row['paymentStatus']}}</td>
                     <td>{{$row['created_at']}}</td>
+                <!--<td><a href="/transaction" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Refund</a></td>-->
                 </tr>
                 @endforeach
             </table>

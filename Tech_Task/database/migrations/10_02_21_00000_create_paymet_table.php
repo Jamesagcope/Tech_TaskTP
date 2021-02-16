@@ -17,6 +17,9 @@ class CreatePaymetTable extends Migration
             $table->increments('transactionID');//Sets each new transaction to a number
             $table->DECIMAL('amount');//unique email so there are no repeats
             $table->string('Reference');
+            $table->string('billingAddress');
+            $table->string('customerInfo');
+            $table->string('paymentStatus');
             $table->integer('userID')->unsigned();
             $table->foreign('userID')->references('id')->on('users');
             $table->dateTime('created_at');
