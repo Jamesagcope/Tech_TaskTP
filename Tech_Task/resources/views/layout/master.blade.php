@@ -31,12 +31,14 @@
 <br/>
 
 <div class="container box">
+    <br/>
+    @include('layout.alert')
     @yield('login')
     @yield('register')
     @yield('transaction')
     @yield('payHistory')
     @yield('madePayment')
-    @include('layout.alert')
+    @yield('payment')
 
     @if($errors->any())
         @foreach($errors->all() as $error)

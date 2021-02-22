@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97733387-b17b-49a4-8a18-6aa3b9a074e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/refundController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/makePayment.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/10_02_21_00000_create_paymet_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/10_02_21_00000_create_paymet_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/paymentHistory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/paymentHistory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/transaction.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/transaction.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,12 +134,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1oItjSkG4rDlMsUQpGtiUYJtf3Y" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -181,7 +184,11 @@
       <workItem from="1613303980414" duration="25511000" />
       <workItem from="1613393878630" duration="20613000" />
       <workItem from="1613479929024" duration="4444000" />
-      <workItem from="1613490071496" duration="1773000" />
+      <workItem from="1613490071496" duration="1872000" />
+      <workItem from="1613508075555" duration="565000" />
+      <workItem from="1613556544974" duration="1350000" />
+      <workItem from="1613998302188" duration="2152000" />
+      <workItem from="1614007088381" duration="1890000" />
     </task>
     <servers />
   </component>
@@ -199,5 +206,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

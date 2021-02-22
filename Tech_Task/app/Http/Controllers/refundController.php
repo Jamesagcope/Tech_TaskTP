@@ -6,26 +6,14 @@ use Illuminate\Http\Request;
 use function App\Http\Controllers\request;
 use App;
 
-class api extends Controller
+class refundController extends Controller
 {
-    public function apiRequest(request $re){
-        $re->validate([//will through an error if fields are left blank
-            'amount' => 'required',
-            'reference' => 'required|min:3',
-            'billingAddress' => 'required',
-            'customerInfo' => 'required'
-        ]);
+    public function apirefund(request $re){
 
-        $amount = $re->amount;//grabs information form form
-        $ref = $re->reference;
-        $bAddress = $re->billingAddress;
-        $cInfo = $re->customerInfo;
 
-        //create session for amount and reference
-        $re->session()->put('tranRef', $ref);
-        $re->session()->put('amount', $amount);
-        $re->session()->put('address', $bAddress);
-        $re->session()->put('info', $cInfo);
+
+        $id = App\login::where();
+
 
         //API
         $url = "https://test.oppwa.com/v1/checkouts";
@@ -49,22 +37,18 @@ class api extends Controller
         curl_close($ch);
         //API
 
-        $response = json_decode($responseData);//decoding jason to get the array output
-
-        $idResponse = $response->id;
-
-
-
+        $Aresponse = json_decode($responseData);//decoding jason to get the array output
 
         //php breake to display the api payment system.
-
+        ?>
+        <style>body {background-color:#f6f6f5;}</style>
+        <script src="https://test.oppwa.com/v1/paymentWidgets.js?checkoutId=<?=$Aresponse->id?>"></script>
+        <form action="/requests/" class="paymentWidgets" data-brands="VISA MASTER AMEX"></form>
+        <?php
         //calls request page that calls requests function
-
-        return view('/maKePayment', compact('idResponse'));
-
     }
     //request function that gets the api response.
-    public function requests(request $path){
+    public function rResponce(request $path){
 
         $rp = $_GET['resourcePath'];//get url path
 

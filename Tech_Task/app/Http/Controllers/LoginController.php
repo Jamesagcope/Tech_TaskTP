@@ -94,7 +94,7 @@ class LoginController
         $re->session()->forget('tranRef');
         $re->session()->forget('amount');
 
-        return redirect('/');
+        return redirect('/')->with('success', 'successfully logout');
 
     }
 }
